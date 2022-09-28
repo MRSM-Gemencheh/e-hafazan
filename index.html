@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./bulma.min.css">
+
+    <title>RamTas 2022</title>
+</head>
+
+<body>
+    <center>
+        <div id="app">
+
+            <div class="results">
+
+                <section id="hero-main" class="hero is-link">
+                    <div class="hero-body">
+                        <h1 id="resultHeader" class="title"></h1>
+                        <h3 id="resultDescription" class="subtitle"></h3>
+                        <div id="resultDateHolder" class="box">
+                            <h5 id="resultDate" class="subtitle is-6 is-color-black"></h5>
+                        </div>
+
+                        <div class="block"></div>
+                        <!-- <h3 class="title is-3">Statistik</h3> -->
+                    </div>
+                </section>
+                <hr>
+
+            </div>
+            <h3 class="title is-5">Ramalan bagi Tarikh</h3>
+            <input id="predictionDatePicker" type="date"> <br><br>
+            <hr>
+            <p id="currentPages" class="subtitle"></p>
+            <hr>
+            
+            <button click="getResults()" class="button" id="getResultsButton">Mula Kira</button>
+
+            <hr>
+    </center>
+
+    </div>
+
+    <div class="columns">
+        <div class="column">
+
+            <div class="box">
+                <p class="subtitle is-6">Saya mempunyai data muka surat tasmik bagi: </p>
+                <div class="columns is-desktop">
+                    <div class="column">
+                        <input checked="true" type="checkbox" name="semester" id="sem1">
+                        <p class="subtitle is-6">Semester 1</p>
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" name="semester" id="sem2" disabled>
+                        <p class="subtitle is-6">Semester 2</p>
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" name="semester" id="sem3" disabled>
+                        <p class="subtitle is-6">Semester 3</p>
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" name="semester" id="sem4" disabled>
+                        <p class="subtitle is-6">Semester 4</p>
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" name="semester" id="sem5" disabled>
+                        <p class="subtitle is-6">Semester 5</p>
+                    </div>
+                    <div class="column">
+                        <input type="checkbox" name="semester" id="sem6" disabled>
+                        <p class="subtitle is-6">Semester 6</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="column">
+            <div class="box">
+                <p class="subtitle is-6">Saya ingin melihat ramalan tasmik bagi pelajar:</p>
+                <div class="columns is-desktop">
+                    <div class="column">
+                        <input type="radio" name="tingkatan" id="form1" checked>
+                        <p class="subtitle is-6">Tingkatan 1</p>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="tingkatan" id="form2">
+                        <p class="subtitle is-6">Tingkatan 2</p>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="tingkatan" id="form3">
+                        <p class="subtitle is-6">Tingkatan 3</p>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="tingkatan" id="form4">
+                        <p class="subtitle is-6">Tingkatan 4</p>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="tingkatan" id="form5">
+                        <p class="subtitle is-6">Tingkatan 5</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="box">
+
+        <section class="sem1">
+
+            <h3 class="title">Semester 1</h3>
+            <div class="columns is-desktop">
+                <div class="column">
+                    <p class="subtitle">Januari</p>
+                    <input id="jansem1" type="number" required>
+                </div>
+                <div class="column">
+                    <p class="subtitle">Februari</p>
+                    <input id="febsem1" type="number" required>
+                </div>
+                <div class="column">
+                    <p class="subtitle">Mac</p>
+                    <input id="macsem1" type="number" required>
+                </div>
+                <div class="column">
+                    <p class="subtitle">April</p>
+                    <input id="aprsem1" type="number" required>
+                </div>
+                <div class="column">
+                    <p class="subtitle">Mei</p>
+                    <input id="meisem1" type="number" required>
+                </div>
+                <div class="column">
+                    <p class="subtitle">Jun</p>
+                    <input id="junsem1" type="number" required>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="sem2">
+        <h3>Semester 2</h3>
+        Julai
+        <input type="number">
+        Ogos
+        <input type="number">
+        September
+        <input type="number">
+        Oktober
+        <input type="number">
+        November
+        <input type="number">
+        Disember
+        <input type="number">
+    </section>
+
+    <section class="sem3">
+        <h3>Semester 3</h3>
+        Januari
+        <input type="number">
+        Februari
+        <input type="number">
+        Mac
+        <input type="number">
+        April
+        <input type="number">
+        Mei
+        <input type="number">
+        Jun
+        <input type="number">
+    </section>
+
+    <section class="sem4">
+        <h3>Semester 4</h3>
+        Julai
+        <input type="number">
+        Ogos
+        <input type="number">
+        September
+        <input type="number">
+        Oktober
+        <input type="number">
+        November
+        <input type="number">
+        Disember
+        <input type="number">
+    </section>
+
+    <section class="sem5">
+        <h3>Semester 5</h3>
+        Januari
+        <input type="number">
+        Februari
+        <input type="number">
+        Mac
+        <input type="number">
+        April
+        <input type="number">
+        Mei
+        <input type="number">
+        Jun
+        <input type="number">
+    </section>
+
+    <section class="sem6">
+        <h3>Semester 6</h3>
+        Julai
+        <input type="number">
+        Ogos
+        <input type="number">
+        September
+        <input type="number">
+        Oktober
+        <input type="number">
+        November
+        <input type="number">
+        Disember
+        <input type="number">
+    </section>
+
+    <script defer src="./index.js">
+
+    </script>
+
+    <!--SygABG_89-->
+</body>
+
+</html>
