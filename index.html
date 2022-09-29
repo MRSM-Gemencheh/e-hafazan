@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./bulma.min.css">
 
     <title>RamTas 2022</title>
+
+    <link rel="icon" href="./icon.png">
 </head>
 
 <body>
@@ -20,9 +22,10 @@
 
                 <section id="hero-main" class="hero is-link">
                     <div class="hero-body">
-                        <h1 id="resultHeader" class="title is-4">RamTas 2022</h1>
-                        <h3 id="resultDescription" class="subtitle is-6">Masukkan data tasmik bagi semester 1 kemudian tekan butang "Mula Kira" di bawah</h3>
-                     
+                        <h1 id="resultHeader" class="title is-4">Sistem Ramalan Tasmik 2022</h1>
+                        <h3 id="resultDescription" class="subtitle is-6">Masukkan data tasmik bagi semester 1 kemudian
+                            tekan butang "Mula Kira" di bawah</h3>
+
                         <div id="resultDateHolder" class="box">
                             <h5 id="resultDate" class="subtitle is-6 is-color-black"></h5>
                         </div>
@@ -33,31 +36,31 @@
                                 <canvas id="myChart" style="width: 45vw; height: 18vh;"></canvas>
                             </div>
 
-                            <p class="subtitle" id="tingkatanPelajar"></p>
+                            <!-- <p class="subtitle" id="tingkatanPelajar"></p>
                             <p class="subtitle" id="tarikhMulaSem1"></p>
                             <p class="subtitle" id="tarikhAkhirSem1"></p>
                             <p class="subtitle" id="jumlahMukaSuratSem1"></p>
                             <p class="subtitle" id="purataTasmikBulanan"></p>
-                            <p class="subtitle" id="mingguKeTarikhKhatam"></p>
+                            <p class="subtitle" id="mingguKeTarikhKhatam"></p> -->
                         </div>
 
                     </div>
                 </section>
                 <hr>
-            </div>    
+            </div>
 
-            <h3 class="title is-5">Ramalan bagi Tarikh</h3>
+            <h3 class="title is-5">Ramalan mengikut Tarikh</h3>
+            <p class="subtittle is-6">Jika anda ingin melihat ramalan spesifik bagi sesuatu tarikh</p><br>
+
             <input id="predictionDatePicker" type="date"> <br><br>
-
-            <hr>
             <p id="currentPages" class="subtitle"></p>
 
-            <button click="getResults()" class="button" id="getResultsButton">Mula Kira</button><br><br>
+
         </div>
-        
+
         <div class="columns">
             <div class="column">
-                
+
                 <div class="box">
                     <p class="subtitle is-6">Saya mempunyai data muka surat tasmik bagi: </p>
                     <div class="columns is-desktop">
@@ -86,8 +89,13 @@
                             <p class="subtitle is-6">Semester 6</p>
                         </div>
                     </div>
+                    <div class="notification is-warning is-light">
+                        <button class="delete"></button>
+                        <p><strong>Maaf</strong>, buat masa ini kami tidak menerima data input buat semester selain
+                            <strong>Semester 1 pelajar</strong></p>
+                    </div>
                 </div>
-                
+
             </div>
             <div class="column">
                 <div class="box">
@@ -115,48 +123,68 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <div class="box">
-            
+
             <section class="sem1">
-                
-                <h3 class="title">Semester 1</h3>
+
+                <h3 id="semester1" class="title is-4">Data Semester 1</h3>
                 <div class="columns is-desktop">
                     <div class="column">
-                        <p class="subtitle">Januari</p>
+                        <p id="sem1bulan1" class="subtitle">Bulan 1</p>
                         <input id="jansem1" type="number" required>
                     </div>
                     <div class="column">
-                        <p class="subtitle">Februari</p>
+                        <p id="sem1bulan2" class="subtitle">Bulan 2</p>
                         <input id="febsem1" type="number" required>
                     </div>
                     <div class="column">
-                        <p class="subtitle">Mac</p>
+                        <p id="sem1bulan3" class="subtitle">Bulan 3</p>
                         <input id="macsem1" type="number" required>
                     </div>
                     <div class="column">
-                        <p class="subtitle">April</p>
+                        <p sem1bulan4 class="subtitle">Bulan 4</p>
                         <input id="aprsem1" type="number" required>
                     </div>
                     <div class="column">
-                        <p class="subtitle">Mei</p>
+                        <p sem1bulan5 class="subtitle">Bulan 5</p>
                         <input id="meisem1" type="number" required>
                     </div>
                     <div class="column">
-                        <p class="subtitle">Jun</p>
+                        <p sem1bulan6 class="subtitle">Bulan 6</p>
                         <input id="junsem1" type="number" required>
                     </div>
                 </div>
             </section>
         </div>
+
+        <div class="notification is-warning is-light">
+            <button class="delete"></button>
+            <p><strong>Peringatan:</strong> Tarikh semester 1 bagi setiap tingkatan adalah berbeza. Contohnya tarikh
+                mula Semester 1 bagi Tingkatan 3 adalah <strong>bulan Januari 2020</strong> manakala tarikh mula
+                Semester 1 bagi Tingkatan 1 adalah <strong>bulan Mac 2022</strong>. Masukkan data yang betul untuk
+                mendapatkan ramalan yang tepat. </p>
+        </div>
+
+        <button click="getResults()" class="button" id="getResultsButton">Mula Kira</button><br><br>
     </center>
-        
-        <script src="./chart.js"></script>
+
+    <script src="./chart.js"></script>
     <script defer src="./index.js"></script>
 
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>RamTas v1.0.0</strong> oleh <a href="https://github.com/MagusWyvern">Adi Ahmad Danish</a>. The
+                source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>
