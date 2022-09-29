@@ -6,6 +6,9 @@ let resultDescription = document.getElementById("resultDescription")
 let resultDateHolder = document.getElementById("resultDateHolder")
 let resultDate = document.getElementById("resultDate")
 let currentPagesText = document.getElementById("currentPages")
+let statistics = document.getElementById("statistics")
+let myChartHolder = document.getElementById("myChart")
+// let tingkatanPelajar = document.getElementById()
 
 let form1 = document.getElementById("form1")
 let form2 = document.getElementById("form2")
@@ -20,16 +23,24 @@ let sem4 = document.getElementById("sem4")
 let sem5 = document.getElementById("sem5")
 let sem6 = document.getElementById("sem6")
 
-let jansem1 = document.getElementById("jansem1").value
-let febsem1 = document.getElementById("febsem1").value
-let macsem1 = document.getElementById("macsem1").value
-let aprsem1 = document.getElementById("aprsem1").value
-let meisem1 = document.getElementById("meisem1").value
-let junsem1 = document.getElementById("junsem1").value
+let jansem1 = Number(document.getElementById("jansem1").value)
+let febsem1 = Number(document.getElementById("febsem1").value)
+let macsem1 = Number(document.getElementById("macsem1").value)
+let aprsem1 = Number(document.getElementById("aprsem1").value)
+let meisem1 = Number(document.getElementById("meisem1").value)
+let junsem1 = Number(document.getElementById("junsem1").value)
 
+let labels = []
+let data = []
+let config = []
+let myChart = []
+let predictionArray = []
+
+let predictionPages = 0
 let predictionDate = new Date()
 let monthVelocity = 0
 let maxPages = 0
+let chartIndi = false
 
 let tarikhSem1 = new Date("2021-01-01")
 
@@ -42,74 +53,106 @@ function monthsBetween(date1, date2) {
 }
 
 function fetchTasmikData() {
-    jansem1 = document.getElementById("jansem1").value
-    febsem1 = document.getElementById("febsem1").value
-    macsem1 = document.getElementById("macsem1").value
-    aprsem1 = document.getElementById("aprsem1").value
-    meisem1 = document.getElementById("meisem1").value
-    junsem1 = document.getElementById("junsem1").value
+    jansem1 = Number(document.getElementById("jansem1").value)
+    febsem1 = Number(document.getElementById("febsem1").value)
+    macsem1 = Number(document.getElementById("macsem1").value)
+    aprsem1 = Number(document.getElementById("aprsem1").value)
+    meisem1 = Number(document.getElementById("meisem1").value)
+    junsem1 = Number(document.getElementById("junsem1").value)
 }
 
 function determineSem1EndDate() {
-    if(form1.checked) {
+    if (form1.checked) {
         tarikhSem1 = new Date("2022-06-01")
     }
-    
-    if(form2.checked) {
+
+    if (form2.checked) {
         tarikhSem1 = new Date("2021-06-01")
     }
-    
-    if(form3.checked) {
+
+    if (form3.checked) {
         tarikhSem1 = new Date("2020-06-01")
     }
-    
-    if(form4.checked) {
+
+    if (form4.checked) {
         tarikhSem1 = new Date("2019-06-01")
     }
-    
-    if(form5.checked) {
+
+    if (form5.checked) {
         tarikhSem1 = new Date("2018-06-01")
     }
 }
+// mrsm1234
+// mrsmgemencheh@123
+// ilovemrsm
 
-async function getResults() {
-    
+
+function getResults() {
+
+
+
     fetchTasmikData()
-    
+
     determineSem1EndDate()
-    
+
+    a = jansem1 + febsem1
+    b = a + macsem1
+    c = b + aprsem1
+    d = c + meisem1
+    e = d + junsem1
+
     predictionDate = new Date(predictionDatePicker.value)
-    
+
     semester1Array = [jansem1, febsem1, macsem1, aprsem1, meisem1, junsem1]
     semester1Array = semester1Array.map(Number)
-    
+
     monthVelocity = semester1Array.reduce((a, b) => a + b, 0) / 6
     let currentPages = semester1Array.reduce((a, b) => a + b, 0)
     let tarikhKhatam = new Date()
-    
-    if (monthVelocity > 0) {
-        for (let monthsToKhatam = 0; currentPages < 604; monthsToKhatam += 1) {
-            currentPages += monthVelocity
-            tarikhKhatam = new Date(tarikhSem1.setMonth(tarikhSem1.getMonth() + 1))
-        }
-    }
+
 
     if (predictionDatePicker.value != '' && new Date(predictionDatePicker.value) < tarikhKhatam) {
         monthsToPredictionDate = monthsBetween(tarikhSem1, predictionDate)
         predictionPages = Math.floor(currentPages + (monthsToPredictionDate * monthVelocity))
         predictionJuzuk = Math.ceil(predictionPages / 20)
 
-        currentPagesText.textContent = "Muka surat: " + predictionPages + " || Juzu' : " + predictionJuzuk
+        currentPagesText.textContent = "Muka surat: ~" + predictionPages + " || Juzu' : " + predictionJuzuk
     }
 
     if (predictionDate > tarikhKhatam) {
-        currentPagesText.textContent = "Muka surat: 604 || Juzu': 30" 
+        currentPagesText.textContent = "Muka surat: 604 || Juzu': 30"
     }
+
+    let tarikha = tarikhSem1
+    if (monthVelocity > 0) {
+        for (let monthsToKhatam = 0; currentPages < 604; monthsToKhatam += 1) {
+            currentPages += monthVelocity
+            tarikhKhatam = new Date(tarikha.setMonth(tarikha.getMonth() + 1))
+        }
+        
+        
+
+        let count = 60
+        iterator = semester1Array.reduce((a, b) => a + b, 0)
+        predictionArray = [jansem1, a, b, c, d, e]
+
+        iterator += monthVelocity
+        for (let i = 0; iterator < 604; iterator += monthVelocity) {
+            count += 1
+            predictionArray.push(iterator)
+        }
+
+        predictionArray.push(604)
+    }
+    
+
 
     maxPages = monthVelocity * 60
 
-    if(maxPages >= 604) {
+    if (maxPages >= 604) {
         mainHero.className = 'hero is-success'
+
+        statistics.style.display = 'block'
         resultDateHolder.style.display = 'block'
         resultHeader.textContent = 'Khatam'
         resultDescription.textContent = 'Pelajar akan sempat khatam pada tarikh di bawah. Teruskan usaha cemerlang!'
@@ -117,10 +160,87 @@ async function getResults() {
     } else {
         mainHero.className = 'hero is-warning'
 
+        resultDate.textContent = ""
+        statistics.style.display = 'block'
         resultHeader.textContent = 'Tidak Khatam'
         resultDescription.textContent = 'Pelajar tidak akan sempat khatam dalam pengajian. Usaha dengan lebih lagi.'
     }
-    
+
+    labels = months({ count: 60 });
+
+
+
+
+    data = {
+        labels: labels,
+        datasets: [{
+            label: 'Semester 1',
+            data: [jansem1, a, b, c, d, e],
+            fill: true,
+            backgroundColor: 'rgb(5, 145, 80)',
+            borderColor: 'rgb(200, 200, 200)',
+            tension: 0.1
+        },
+        {
+            label: 'Ramalan',
+            data: predictionArray,
+            fill: false,
+            backgroundColor: 'rgb(40, 205, 140)',
+            borderColor: 'rgb(200, 200, 200)',
+            tension: 0.1
+        }
+        ]
+    };
+
+    config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    if (chartIndi != false) {
+        myChart.destroy()
+    }
+
+    chartIndi = true
+    myChart = new Chart(
+        document.getElementById("myChart"),
+        config
+    );
+
+    // determineSem1EndDate()
 }
 
 getResultsButton.onclick = () => getResults()
+
+const MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+];
+
+function months(config) {
+    var cfg = config || {};
+    var count = cfg.count || 12;
+    var section = cfg.section;
+    var values = [];
+    var i, value;
+
+    for (i = 0; i < count; ++i) {
+        value = MONTHS[Math.ceil(i) % 12];
+        values.push(value.substring(0, section));
+    }
+
+    return values;
+}
+
+

@@ -33,3 +33,7 @@
 #resultDate {
     color: black
 }
+
+#statistics {
+    display: none;
+}

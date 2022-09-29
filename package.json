@@ -1,0 +1,26 @@
+{
+  "name": "ramtas-2022",
+  "version": "1.0.0",
+  "description": "Ramalan tasmik dan khatam bagi pelajar MRSM UA",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRSM-Gemencheh/ramtas-2022.git"
+  },
+  "keywords": [
+    "js",
+    "d3"
+  ],
+  "author": "MagusWyvern",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MRSM-Gemencheh/ramtas-2022/issues"
+  },
+  "homepage": "https://github.com/MRSM-Gemencheh/ramtas-2022#readme",
+  "dependencies": {
+    "chart.js": "^3.9.1"
+  }
+}
