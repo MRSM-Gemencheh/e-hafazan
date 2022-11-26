@@ -21,6 +21,7 @@
 
                 <section id="hero-main" class="hero is-link">
                     <div class="hero-body">
+                        <img src="./icon.png" alt="" style="width: 10%;">
                         <h1 id="resultHeader" class="title is-4">RamTas 2022</h1>
                         <h3 id="resultDescription" class="subtitle is-6">Sistem Pengiraan dan Ramalan Tasmik bagi kegunaan Pelajar dan Guru</h3>
 
@@ -50,7 +51,7 @@
             <div class="columns">
                 <div class="column">
                     <p>Kelas:</p>
-                    <input id="inputClass" type="number">
+                    <input id="inputClass" type="number" min="100" max="506">
                 </div>
                 <div class="column">
                     <p>Homeroom:</p>
@@ -69,17 +70,17 @@
                 </div>
                 <div class="column">
                     <p>Muka Surat Terkini:</p>
-                    <input id="inputPages" type="number">
+                    <input id="inputPages" type="number" min="1" max="604">
                 </div>
             </div>
 
             <hr>
 
-            <p class="subtitle">Pelajar tidak konsisten dalam Rekod Tasmik <input class="checkbox" type="checkbox" name="" id="override"></p>
-            <p>Purata tasmik bulanan baharu: <input type="number" id="overrideMonthlyAverage"></p>
+            <p class="subtitle">Pelajar Tidak Konsisten dalam Rekod Tasmik? <input class="checkbox" type="checkbox" name="" id="override"></p>
+            <p>Purata Tasmik Bulanan Baharu: <input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
             <br><br>
 
-            <button onclick="generateReport()" class="button is-link" id="getResultsButton">Hasilkan Laporan</button><br><br>
+            <button onclick="generateReport()" class="button is-link" id="getResultsButton">Laporan</button><br><br>
         </div>
 
     </center>
@@ -87,17 +88,17 @@
         <div class="box has-background-info-light" id="generatedReport" style="width: 100%;">
 
                 
-                <p class="subtitle">Nama Pelajar: <strong id="outputName"></strong></p> 
-                <p class="subtitle">No. Maktab: <strong id="outputCollegeId"></strong></p>
-                <p class="subtitle">Kelas: <strong id="outputClass"></strong></p>
-                <p class="subtitle">Homeroom:  <strong id="outputHomeroom"></strong></p>
-                <p class="subtitle">Tarikh Laporan Dijana: <strong id="currentDate"></strong></p>
+                <p class="subtitle">Nama Pelajar: <div class="box"><strong id="outputName"></strong></div></p> 
+                <p class="subtitle">No. Maktab: <div class="box"><strong id="outputCollegeId"></strong></div></p>
+                <p class="subtitle">Kelas: <div class="box"><strong id="outputClass"></strong></div></p>
+                <p class="subtitle">Homeroom: <div class="box"><strong id="outputHomeroom"></strong></div></p>
+                <p class="subtitle">Tarikh Laporan Dijana: <div class="box"><strong id="currentDate"></strong></div></p>
                 
                 <hr>
                 
-                <p class="subtitle">Guru Tasmik: <strong id="outputTeacherName"></strong></p>
-                <p class="subtitle">Muka Surat Terkini Pelajar: <strong id="currentPages"></strong></p>
-                <p class="subtitle">Juzu' Terkini Pelajar: <strong id="currentJuzuk"></strong></p>
+                <p class="subtitle">Guru Tasmik: <div class="box"><strong id="outputTeacherName"></strong></div></p>
+                <p class="subtitle">Muka Surat Terkini Pelajar: <div class="box"><strong id="currentPages"></strong></div></p>
+                <p class="subtitle">Juzu' Terkini Pelajar: <div class="box"><strong id="currentJuzuk"></strong></div></p>
                 
                 <p class="subtitle is-6">Berdasarkan data yang diterima, berikut merupakan hasil pengiraan dan ramalan bagi pelajar</p>
 
@@ -121,7 +122,9 @@
                 <hr>
 
                 <h2 class="subtitle">Carta Statistik Tasmik Pelajar</h2>
-                <canvas id="statisticsChart"></canvas>
+                <div class="box">
+                    <canvas id="statisticsChart"></canvas>
+                </div>
 
 
                 <p class="subtitle is-6">Laporan ini dijana oleh komputer dan tiada tandatangan diperlukan.</p>
