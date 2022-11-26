@@ -23,7 +23,8 @@
                     <div class="hero-body">
                         <img src="./icon.png" alt="" style="width: 10%;">
                         <h1 id="resultHeader" class="title is-4">RamTas 2022</h1>
-                        <h3 id="resultDescription" class="subtitle is-6">Sistem Pengiraan dan Ramalan Tasmik bagi kegunaan Pelajar dan Guru</h3>
+                        <h3 id="resultDescription" class="subtitle is-6">Sistem Pengiraan dan Ramalan Tasmik bagi
+                            kegunaan Pelajar dan Guru</h3>
 
                         <div id="statistics">
                             <h3 class="title is-4">Statistik</h3>
@@ -57,12 +58,12 @@
                     <p>Homeroom:</p>
                     <input id="inputHomeroom" type="text">
                 </div>
-                
+
             </div>
-            
+
             <hr>
-            
-            
+
+
             <div class="columns">
                 <div class="column">
                     <p>Guru Tasmik:</p>
@@ -76,7 +77,8 @@
 
             <hr>
 
-            <p class="subtitle">Pelajar Tidak Konsisten dalam Rekod Tasmik? <input class="checkbox" type="checkbox" name="" id="override"></p>
+            <p class="subtitle">Pelajar Tidak Konsisten dalam Rekod Tasmik? <input class="checkbox" type="checkbox"
+                    name="" id="override"></p>
             <p>Purata Tasmik Bulanan Baharu: <input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
             <br><br>
 
@@ -84,54 +86,80 @@
         </div>
 
     </center>
-        
-        <div class="box has-background-info-light" id="generatedReport" style="width: 100%;">
 
-                
-                <p class="subtitle">Nama Pelajar: <div class="box"><strong id="outputName"></strong></div></p> 
-                <p class="subtitle">No. Maktab: <div class="box"><strong id="outputCollegeId"></strong></div></p>
-                <p class="subtitle">Kelas: <div class="box"><strong id="outputClass"></strong></div></p>
-                <p class="subtitle">Homeroom: <div class="box"><strong id="outputHomeroom"></strong></div></p>
-                <p class="subtitle">Tarikh Laporan Dijana: <div class="box"><strong id="currentDate"></strong></div></p>
-                
-                <hr>
-                
-                <p class="subtitle">Guru Tasmik: <div class="box"><strong id="outputTeacherName"></strong></div></p>
-                <p class="subtitle">Muka Surat Terkini Pelajar: <div class="box"><strong id="currentPages"></strong></div></p>
-                <p class="subtitle">Juzu' Terkini Pelajar: <div class="box"><strong id="currentJuzuk"></strong></div></p>
-                
-                <p class="subtitle is-6">Berdasarkan data yang diterima, berikut merupakan hasil pengiraan dan ramalan bagi pelajar</p>
-
-                <hr>
-                
-                <p class="subtitle is-6">Pelajar akan berjaya menamatkan 30 Juzu' hafalan pada tarikh ini</p>
-                <p class="subtitle">Tarikh Pelajar Khatam: <strong id="khatamDate"></strong></p>
-                
-                <p class="subtitle is-6">Jumlah bulan sebelum pelajar akan berjaya menamatkan 30 Juzu' hafalan</p>
-                <p class="subtitle">Jumlah Bulan untuk Pelajar Khatam: <strong id="monthsLeft"></strong></p>
-                
-                <p class="subtitle is-6">Pelajar akan khatam sewaktu dia berada di tingkatan ini</p>
-                <p class="subtitle">Tingkatan Pelajar akan Khatam: <strong id="khatamForm"></strong></p>
-                
-                <p class="subtitle">Purata Muka Surat Bulanan Pelajar: <strong id="monthlyAveragePages"></strong></p>
-                
-                <p class="subtitle">Jumlah Muka Surat Diperlukan untuk Khatam: <strong id="pagesLeft"></strong></p>
-                
-                <p class="subtitle">Adakah Pelajar akan Khatam dalam Pengajian? <strong id="khatamDuringStudy"></strong></p>
-                
-                <hr>
-
-                <h2 class="subtitle">Carta Statistik Tasmik Pelajar</h2>
-                <div class="box">
-                    <canvas id="statisticsChart"></canvas>
-                </div>
+    <div class="box has-background-info-light" id="generatedReport" style="width: 100%;">
 
 
-                <p class="subtitle is-6">Laporan ini dijana oleh komputer dan tiada tandatangan diperlukan.</p>
+        <p class="subtitle">Nama Pelajar:
+        <div class="box"><strong id="outputName"></strong></div>
+        </p>
+        <p class="subtitle">No. Maktab:
+        <div class="box"><strong id="outputCollegeId"></strong></div>
+        </p>
+        <p class="subtitle">Kelas:
+        <div class="box"><strong id="outputClass"></strong></div>
+        </p>
+        <p class="subtitle">Homeroom:
+        <div class="box"><strong id="outputHomeroom"></strong></div>
+        </p>
+        <p class="subtitle">Tarikh Laporan Dijana:
+        <div class="box"><strong id="currentDate"></strong></div>
+        </p>
 
+        <hr>
+
+        <p class="subtitle">Guru Tasmik:
+        <div class="box"><strong id="outputTeacherName"></strong></div>
+        </p>
+        <p class="subtitle">Muka Surat Terkini Pelajar:
+        <div class="box"><strong id="currentPages"></strong></div>
+        </p>
+        <p class="subtitle">Juzu' Terkini Pelajar:
+        <div class="box"><strong id="currentJuzuk"></strong></div>
+        </p>
+
+        <p class="subtitle is-6">Berdasarkan data yang diterima, berikut merupakan hasil pengiraan dan ramalan bagi
+            pelajar</p>
+
+        <hr>
+
+        <p class="subtitle is-6">Pelajar akan berjaya menamatkan 30 Juzu' hafalan pada tarikh ini</p>
+        <p class="subtitle">Tarikh Pelajar Khatam: <strong id="khatamDate"></strong></p>
+
+        <p class="subtitle is-6">Jumlah bulan sebelum pelajar akan berjaya menamatkan 30 Juzu' hafalan</p>
+        <p class="subtitle">Jumlah Bulan untuk Pelajar Khatam: <strong id="monthsLeft"></strong></p>
+
+        <p class="subtitle is-6">Pelajar akan khatam sewaktu dia berada di tingkatan ini</p>
+        <p class="subtitle">Tingkatan Pelajar akan Khatam: <strong id="khatamForm"></strong></p>
+
+        <p class="subtitle">Purata Muka Surat Bulanan Pelajar: <strong id="monthlyAveragePages"></strong></p>
+
+        <p class="subtitle">Jumlah Muka Surat Diperlukan untuk Khatam: <strong id="pagesLeft"></strong></p>
+
+        <p class="subtitle">Adakah Pelajar akan Khatam dalam Pengajian? <strong id="khatamDuringStudy"></strong></p>
+
+        <hr>
+
+        <h2 class="subtitle">Carta Statistik Tasmik Pelajar</h2>
+        <div class="box">
+            <canvas id="statisticsChart"></canvas>
         </div>
 
-        
+
+        <p class="subtitle is-6">Laporan ini dijana oleh komputer dan tiada tandatangan diperlukan.</p>
+
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>RamTas v1.2.0</strong> oleh <a href="https://github.com/MagusWyvern">Adi Ahmad Danish</a>. Sumber kod pengaturcaraan berlesen
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Bahan dalam laman web berlesen <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+
+
     <script src="./chart.js"></script>
     <script defer src="./index.js"></script>
 
