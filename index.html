@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./bulma.min.css">
 
@@ -55,12 +56,12 @@
                     <p>Homeroom:</p>
                     <input id="inputHomeroom" type="text">
                 </div>
-
+                
             </div>
             
             <hr>
-
-
+            
+            
             <div class="columns">
                 <div class="column">
                     <p>Guru Tasmik:</p>
@@ -71,14 +72,19 @@
                     <input id="inputPages" type="number">
                 </div>
             </div>
-            <p class="subtitle"></p>
+
+            <hr>
+
+            <p class="subtitle">Pelajar tidak konsisten dalam Rekod Tasmik <input class="checkbox" type="checkbox" name="" id="override"></p>
+            <p>Purata tasmik bulanan baharu: <input type="number" id="overrideMonthlyAverage"></p>
+            <br><br>
 
             <button onclick="generateReport()" class="button is-link" id="getResultsButton">Hasilkan Laporan</button><br><br>
         </div>
 
     </center>
         
-        <div class="box" id="generatedReport" style="width: 100%;">
+        <div class="box has-background-info-light" id="generatedReport" style="width: 100%;">
 
                 
                 <p class="subtitle">Nama Pelajar: <strong id="outputName"></strong></p> 
@@ -97,21 +103,27 @@
 
                 <hr>
                 
-                <p class="subtitle">Tarikh Pelajar Khatam:</p>
                 <p class="subtitle is-6">Pelajar akan berjaya menamatkan 30 Juzu' hafalan pada tarikh ini</p>
+                <p class="subtitle">Tarikh Pelajar Khatam: <strong id="khatamDate"></strong></p>
                 
-                <p class="subtitle">Bulan untuk Pelajar Khatam: <strong id="monthsLeft"></strong></p>
                 <p class="subtitle is-6">Jumlah bulan sebelum pelajar akan berjaya menamatkan 30 Juzu' hafalan</p>
+                <p class="subtitle">Jumlah Bulan untuk Pelajar Khatam: <strong id="monthsLeft"></strong></p>
                 
-                <p class="subtitle">Tingkatan Pelajar Khatam:</p>
                 <p class="subtitle is-6">Pelajar akan khatam sewaktu dia berada di tingkatan ini</p>
+                <p class="subtitle">Tingkatan Pelajar akan Khatam: <strong id="khatamForm"></strong></p>
                 
                 <p class="subtitle">Purata Muka Surat Bulanan Pelajar: <strong id="monthlyAveragePages"></strong></p>
                 
-                <p class="subtitle">Jumlah Muka Surat diperlukan untuk Khatam: <strong id="pagesLeft"></strong></p>
+                <p class="subtitle">Jumlah Muka Surat Diperlukan untuk Khatam: <strong id="pagesLeft"></strong></p>
                 
-                <p class="subtitle">Adakah pelajar akan sempat khatam dalam pengajian?</p>
+                <p class="subtitle">Adakah Pelajar akan Khatam dalam Pengajian? <strong id="khatamDuringStudy"></strong></p>
                 
+                <hr>
+
+                <h2 class="subtitle">Carta Statistik Tasmik Pelajar</h2>
+                <canvas id="statisticsChart"></canvas>
+
+
                 <p class="subtitle is-6">Laporan ini dijana oleh komputer dan tiada tandatangan diperlukan.</p>
 
         </div>
