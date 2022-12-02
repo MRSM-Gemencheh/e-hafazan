@@ -2,34 +2,6 @@
     color: black;
 }
 
-.sem1 {
-    display: block;
-}
-
-.sem2 {
-    display: none;
-}
-
-.sem3 {
-    display: none;
-}
-
-.sem4 {
-    display: none;
-}
-
-.sem5 {
-    display: none;
-}
-
-.sem6 {
-    display: none;
-}
-
-#resultDateHolder {
-    display: none;
-}
-
 #resultDate {
     color: black
 }
