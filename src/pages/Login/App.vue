@@ -14,7 +14,7 @@ import WorkInProgress from '../../components/WorkInProgress.vue';
       <form class="box">
 
       <div class="field">
-        <label class="label">No. Gaji / Nama Pengguna</label>
+        <label class="label">E-mel Pengguna</label>
         <div class="control">
           <input class="input" type="email" placeholder="000000">
         </div>
