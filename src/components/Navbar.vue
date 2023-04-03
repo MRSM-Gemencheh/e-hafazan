@@ -17,32 +17,32 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a href="/index.html" class="navbar-item">
           Laman Utama
         </a>
   
-        <a class="navbar-item">
+        <a href="#" class="navbar-item">
           Dokumentasi
         </a>
   
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
+          <a href="#" class="navbar-link">
             Tambahan
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <a href="#" class="navbar-item">
               Statistik 2020
             </a>
-            <a class="navbar-item">
+            <a href="#" class="navbar-item">
               Statistik 2021
             </a>
-            <a class="navbar-item">
+            <a href="#" class="navbar-item">
               Statistik 2022
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
-              Borang Laporan Masalah
+            <a href="#" class="navbar-item">
+              Jumpa Sebarang Masalah?
             </a>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary" href="/login.html">
-              Log masuk
+              Log Masuk
             </a>
           </div>
         </div>

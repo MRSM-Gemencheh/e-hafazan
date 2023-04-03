@@ -1,6 +1,8 @@
 # e-hafazan
 
-This template should help get you started developing with Vue 3 in Vite.
+Sebuah sistem pengurusan data rekod tasmik dan murajaah pelajar MRSM Gemencheh UA. Dihasilkan dengan menggunakan Firebase dan Vue.js.
+
+Sila cipta isu untuk sebarang masalah yang anda hadapi semasa menggunakan sistem ini.
 
 ## Recommended IDE Setup
 

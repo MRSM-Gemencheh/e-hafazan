@@ -1,7 +1,8 @@
 {
   "name": "e-hafazan",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "MagusWyvern",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "bulma": "^0.9.4",
+    "firebase": "^9.19.1",
     "sass": "^1.59.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"

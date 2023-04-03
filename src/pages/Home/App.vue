@@ -1,5 +1,21 @@
 <script setup>
 import Navbar from '../../components/Navbar.vue'
+import MainHero from './MainHero.vue';
+import Footer from '../../components/Footer.vue'
+import WorkInProgress from '../../components/WorkInProgress.vue';
+import { initializeApp } from 'firebase/app';
+
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAI9SWPd1lxcxGff2NhulPF1pfC9aA8a3I",
+  authDomain: "e-hafazan-gmc.firebaseapp.com",
+  projectId: "e-hafazan-gmc",
+  storageBucket: "e-hafazan-gmc.appspot.com",
+  messagingSenderId: "805093423672",
+  appId: "1:805093423672:web:e3f7f375eb3e6e4f8b84cd"
+};
+
+const app = initializeApp(firebaseConfig);
 
 
 </script>
@@ -7,43 +23,43 @@ import Navbar from '../../components/Navbar.vue'
 <template>
   <Navbar />
 
+  <MainHero />
   <div class="block">
 
   </div>
   <header>
     <div class="container">
-      <div class="notification is-primary">
+
+      <div class="box">
+
         <p class="subtitle">
-          Selamat datang ke sistem e-hafazan pelajar MRSM Gemencheh Ulul Albab! <br><br>Sila log masuk untuk mengemaskini
-          sebarang rekod tasmik.
+          Selamat datang ke sistem E-hafazan pelajar MRSM Gemencheh Ulul Albab! <br><br>Sebarang proses penukaran rekod
+          tasmik atau murajaah pelajar memerlukan anda untuk log masuk.
         </p>
       </div>
 
-      <div class="columns">
-        <div class="column">
-          <a href="./ramalan.html">
-            <button class="button">Ramalan Tasmik</button>
-          </a>
-        </div>
-        <div class="column">
-          <a href="./tasmik.html">
-            <button class="button">Rekod Tasmik</button>
-          </a>
-        </div>
-        <div class="column">
-          <a href="murajaah.html">
-            <button class="button">Rekod Murajaah</button>
-          </a>
-        </div>
-        <div class="column">
-          <a href="statistik.html">
-            <button class="button">Statistik Keseluruhan</button>
-          </a>
-        </div>
-      </div>
+      <center>
+
+        <a href="./ramalan.html">
+          <button class="button is-primary m-5">Ramalan Tasmik</button>
+        </a>
+  
+        <a href="./tasmik.html">
+          <button class="button is-primary m-5">Rekod Tasmik</button>
+        </a>
+        <a href="murajaah.html">
+          <button class="button is-warning m-5">Rekod Murajaah</button>
+        </a>
+        <a href="statistik.html">
+          <button class="button is-warning m-5">Statistik Keseluruhan</button>
+        </a>
+      </center>
 
     </div>
   </header>
+
+  <div class="block"></div>
+  <Footer />
 </template>
 
 <style scoped>

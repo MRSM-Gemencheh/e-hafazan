@@ -1,5 +1,6 @@
 <script setup>
 import Navbar from '../../components/Navbar.vue'
+import Footer from '../../components/Footer.vue'
 
 const maxPages = 604
 const maxJuzuk = 30
@@ -385,13 +386,6 @@ function mainCalculation() {
 
     </div>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>RamTas v1.2.0</strong> oleh <a href="https://github.com/MagusWyvern">Adi Ahmad Danish</a>. Sumber kod pengaturcaraan berlesen
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Bahan dalam laman web berlesen <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-            </p>
-        </div>
-    </footer>
+<Footer />
 
 </template>

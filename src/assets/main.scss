@@ -1,4 +1,8 @@
-// Customizations Here (Optional)
-
 // Bulma Import
 @import 'bulma/css/bulma.css';
+
+// Customizations Here (Optional)
+.has-text-info-light {
+    color: hsl(206, 89%, 76%)
+}
+
