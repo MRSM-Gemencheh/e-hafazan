@@ -21,6 +21,8 @@ const MONTHS = [
     'December'
 ];
 
+
+
 document.body.onload = function () {
     const statisticsChart = document.getElementById('myChart')
 }
@@ -29,7 +31,7 @@ let generatedChart = false
 
 function addMonths(date, months) {
     var d = date.getDate();
-    date.setMonth(date.getMonth() + +months);
+    date.setMonth(date.getMonth() + + months);
     if (date.getDate() != d) {
         date.setDate(0);
     }
@@ -73,9 +75,11 @@ function getFormData() {
 
 function generateChartData() {
     let pastDataArray = []
-    let previousMonthData = determineStudentCurrentForm() * 12
-    let futureMonthData = (5 - determineStudentCurrentForm()) * 12
     let futureDataArray = []
+
+    // Calculates how many months to generate data for
+    let previousMonthData = determineStudentCurrentForm() * 12 + 6
+    let futureMonthData = (5 - determineStudentCurrentForm()) * 12 + 6
 
     for (let i = 0; i < previousMonthData; i++) {
         let additive = mainCalculation().monthlyAveragePages * i
@@ -170,6 +174,7 @@ function generateReport() {
     const data = {
         labels: monthLabels,
         datasets: [{
+            yAxisID: 'y',
             label: 'Tasmik Sebelum',
             data: generateChartData().pastDataArray,
             fill: true,
@@ -178,25 +183,58 @@ function generateReport() {
             tension: 0.1
         },
         {
+            yAxisID: 'y2',
             label: 'Ramalan Tasmik',
             data: generateChartData().futureDataArray,
             fill: false,
             borderColor: '#399E5A',
             backgroundColor: '#399E5A',
             tension: 0.1
-        }]
+        }],
+
     };
 
     const config = {
         type: 'line',
         data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            stacked: false,
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: 0,
+                    max: 604
+                },
+    
+                y2: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min: 0,
+                    max: 604
+                }
+            }
+
+        }
     };
 
     if (generatedChart) {
         generatedChart.destroy()
     }
 
+
+
     generatedChart = new Chart(statisticsChart, config, data)
+
+    // Hide the forms when the report is generated
+
+    let formContainer = document.getElementById('formContainer')
+
+    formContainer.style.display = "none"
 }
 
 
@@ -220,7 +258,7 @@ function determineStudentCurrentForm() {
 
 function mainCalculation() {
     let currentMonths = determineStudentCurrentForm() * 12
-    let monthlyAveragePages = getFormData().inputPages / currentMonths
+    let monthlyAveragePages = getFormData().inputPages / (currentMonths - 6) // TEMPORARY FIX: -6 months
 
     let pagesLeft = maxPages - getFormData().inputPages
     let monthsLeft = Math.ceil(pagesLeft / monthlyAveragePages)
@@ -279,48 +317,55 @@ function mainCalculation() {
                 <hr>
             </div>
 
-            <div class="columns">
-                <div class="column">
-                    <p>Nama Pelajar:</p>
-                    <input id="inputName" type="text" style="width: 35vw;">
+            <div id="formContainer">
+
+                <div class="columns">
+                    <div class="column">
+                        <p>Nama Pelajar:</p>
+                        <input id="inputName" type="text" style="width: 35vw;">
+                    </div>
+                    <div class="column">
+                        <p>No. Maktab:</p>
+                        <input id="inputCollegeId" type="text">
+                    </div>
                 </div>
-                <div class="column">
-                    <p>No. Maktab:</p>
-                    <input id="inputCollegeId" type="text">
+                <div class="columns">
+                    <div class="column">
+                        <p>Kelas:</p>
+                        <input id="inputClass" type="number" min="100" max="506">
+                    </div>
+                    <div class="column">
+                        <p>Homeroom:</p>
+                        <input id="inputHomeroom" type="text">
+                    </div>
+    
                 </div>
+
+
+
+                <hr>
+    
+    
+                <div class="columns">
+                    <div class="column">
+                        <p>Guru Tasmik:</p>
+                        <input id="inputTeacherName" type="text" style="width: 35vw;">
+                    </div>
+                    <div class="column">
+                        <p>Muka Surat Terkini:</p>
+                        <input id="inputPages" type="number" min="1" max="604">
+                    </div>
+                </div>
+    
+                <hr>
             </div>
-            <div class="columns">
-                <div class="column">
-                    <p>Kelas:</p>
-                    <input id="inputClass" type="number" min="100" max="506">
-                </div>
-                <div class="column">
-                    <p>Homeroom:</p>
-                    <input id="inputHomeroom" type="text">
-                </div>
-
-            </div>
-
-            <hr>
 
 
-            <div class="columns">
-                <div class="column">
-                    <p>Guru Tasmik:</p>
-                    <input id="inputTeacherName" type="text" style="width: 35vw;">
-                </div>
-                <div class="column">
-                    <p>Muka Surat Terkini:</p>
-                    <input id="inputPages" type="number" min="1" max="604">
-                </div>
-            </div>
-
-            <hr>
 
 
             <br><br>
 
-            <button @click="generateReport" class="button is-link" id="getResultsButton">Laporan</button><br><br>
+            <button @click="generateReport" class="button is-link" id="getResultsButton">Jana Laporan</button><br><br>
         </div>
 
     </center>
@@ -378,18 +423,30 @@ function mainCalculation() {
 
         <hr>
 
-        <h2 class="subtitle">Carta Statistik Tasmik Pelajar</h2>
+        <h2 class="subtitle">Carta Tasmik Pelajar</h2>
         <div class="box">
             <canvas id="statisticsChart"></canvas>
         </div>
 
 
-        <p class="subtitle is-6">Laporan ini dijana oleh komputer dan tiada tandatangan diperlukan.</p>
+        <p class="subtitle is-6">Laporan ini dijana oleh komputer.</p>
 
     </div>
 
     <Footer />
-    <p class="subtitle"><input class="checkbox" type="checkbox" name=""
-                    id="override"></p>
-            <p><input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
+
+    <div class="hideMe">
+
+        <p class="subtitle"><input class="checkbox" type="checkbox" name=""
+                        id="override"></p>
+                <p><input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
+    </div>
 </template>
+
+<style>
+
+.hideMe {
+    display: none;
+}
+
+</style>
