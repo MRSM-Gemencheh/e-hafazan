@@ -5,7 +5,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="./index.html">
-        <img src="icon.png">  <strong>&nbsp&nbsp&nbspE-Hafazan</strong>
+        <img src="./icon.png">  <strong>&nbsp&nbsp&nbspE-Hafazan</strong>
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
