@@ -1,6 +1,7 @@
 <script setup>
 import Navbar from '../../components/Navbar.vue'
 import Footer from '../../components/Footer.vue'
+import { Chart } from 'chart.js/auto'
 
 const maxPages = 604
 const maxJuzuk = 30
@@ -19,7 +20,10 @@ const MONTHS = [
     'November',
     'December'
 ];
-const statisticsChart = document.getElementById('statisticsChart')
+
+document.body.onload = function () {
+    const statisticsChart = document.getElementById('myChart')
+}
 
 let generatedChart = false
 
@@ -27,7 +31,7 @@ function addMonths(date, months) {
     var d = date.getDate();
     date.setMonth(date.getMonth() + +months);
     if (date.getDate() != d) {
-      date.setDate(0);
+        date.setDate(0);
     }
     return date;
 }
@@ -73,7 +77,7 @@ function generateChartData() {
     let futureMonthData = (5 - determineStudentCurrentForm()) * 12
     let futureDataArray = []
 
-    for (i = 0; i < previousMonthData; i++) {
+    for (let i = 0; i < previousMonthData; i++) {
         let additive = mainCalculation().monthlyAveragePages * i
         if (additive > 604) {
             pastDataArray.push(604)
@@ -83,11 +87,11 @@ function generateChartData() {
         futureDataArray.push(0)
     }
 
-    additive = pastDataArray.at(-1) + mainCalculation().monthlyAveragePages
+    let additive = pastDataArray.at(-1) + mainCalculation().monthlyAveragePages
 
     if (getFormData().override) {
-        for (i = 0; i < futureMonthData; i++) {
-            additived = getFormData().overrideMonthlyAverage * i + additive
+        for (let i = 0; i < futureMonthData; i++) {
+            let additived = getFormData().overrideMonthlyAverage * i + additive
             if (additived >= 604) {
                 futureDataArray.push(604)
             } else {
@@ -96,8 +100,8 @@ function generateChartData() {
         }
 
     } else {
-        for (i = 0; i < futureMonthData; i++) {
-            additived = mainCalculation().monthlyAveragePages * i + additive
+        for (let i = 0; i < futureMonthData; i++) {
+            let additived = mainCalculation().monthlyAveragePages * i + additive
             if (additived >= 604) {
                 futureDataArray.push(604)
             } else {
@@ -106,7 +110,7 @@ function generateChartData() {
         }
 
     }
-    
+    console.log(futureDataArray)
     return { pastDataArray, futureDataArray }
 }
 
@@ -188,7 +192,7 @@ function generateReport() {
         data: data,
     };
 
-    if(generatedChart) {
+    if (generatedChart) {
         generatedChart.destroy()
     }
 
@@ -262,13 +266,13 @@ function mainCalculation() {
                         <h3 id="resultDescription" class="subtitle is-6">Sistem Pengiraan dan Ramalan Tasmik bagi
                             kegunaan Pelajar dan Guru</h3>
 
-                        <div id="statistics">
+                        <!-- <div id="statistics">
                             <h3 class="title is-4">Statistik</h3>
                             <div class="box">
                                 <canvas id="myChart" style="width: 45vw; height: 18vh;"></canvas>
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
                 </section>
@@ -313,12 +317,10 @@ function mainCalculation() {
 
             <hr>
 
-            <p class="subtitle">Pelajar Tidak Konsisten dalam Rekod Tasmik? <input class="checkbox" type="checkbox"
-                    name="" id="override"></p>
-            <p>Purata Tasmik Bulanan Baharu: <input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
+
             <br><br>
 
-            <button onclick="generateReport()" class="button is-link" id="getResultsButton">Laporan</button><br><br>
+            <button @click="generateReport" class="button is-link" id="getResultsButton">Laporan</button><br><br>
         </div>
 
     </center>
@@ -327,31 +329,31 @@ function mainCalculation() {
 
 
         <p class="subtitle">Nama Pelajar:
-        <div class="box"><strong id="outputName"></strong></div>
+            <strong id="outputName"></strong>
         </p>
         <p class="subtitle">No. Maktab:
-        <div class="box"><strong id="outputCollegeId"></strong></div>
+            <strong id="outputCollegeId"></strong>
         </p>
         <p class="subtitle">Kelas:
-        <div class="box"><strong id="outputClass"></strong></div>
+            <strong id="outputClass"></strong>
         </p>
         <p class="subtitle">Homeroom:
-        <div class="box"><strong id="outputHomeroom"></strong></div>
+            <strong id="outputHomeroom"></strong>
         </p>
         <p class="subtitle">Tarikh Laporan Dijana:
-        <div class="box"><strong id="currentDate"></strong></div>
+            <strong id="currentDate"></strong>
         </p>
 
         <hr>
 
         <p class="subtitle">Guru Tasmik:
-        <div class="box"><strong id="outputTeacherName"></strong></div>
+        <strong id="outputTeacherName"></strong>
         </p>
         <p class="subtitle">Muka Surat Terkini Pelajar:
-        <div class="box"><strong id="currentPages"></strong></div>
+        <strong id="currentPages"></strong>
         </p>
         <p class="subtitle">Juzu' Terkini Pelajar:
-        <div class="box"><strong id="currentJuzuk"></strong></div>
+        <strong id="currentJuzuk"></strong>
         </p>
 
         <p class="subtitle is-6">Berdasarkan data yang diterima, berikut merupakan hasil pengiraan dan ramalan bagi
@@ -359,13 +361,13 @@ function mainCalculation() {
 
         <hr>
 
-        <p class="subtitle is-6">Pelajar akan berjaya menamatkan 30 Juzu' hafalan pada tarikh ini</p>
+        <!-- <p class="subtitle is-6">Pelajar akan berjaya menamatkan 30 Juzu' hafalan pada tarikh ini</p> -->
         <p class="subtitle">Tarikh Pelajar Khatam: <strong id="khatamDate"></strong></p>
 
-        <p class="subtitle is-6">Jumlah bulan sebelum pelajar akan berjaya menamatkan 30 Juzu' hafalan</p>
+        <!-- <p class="subtitle is-6">Jumlah bulan sebelum pelajar akan berjaya menamatkan 30 Juzu' hafalan</p> -->
         <p class="subtitle">Jumlah Bulan untuk Pelajar Khatam: <strong id="monthsLeft"></strong></p>
 
-        <p class="subtitle is-6">Pelajar akan khatam sewaktu dia berada di tingkatan ini</p>
+        <!-- <p class="subtitle is-6">Pelajar akan khatam sewaktu dia berada di tingkatan ini</p> -->
         <p class="subtitle">Tingkatan Pelajar akan Khatam: <strong id="khatamForm"></strong></p>
 
         <p class="subtitle">Purata Muka Surat Bulanan Pelajar: <strong id="monthlyAveragePages"></strong></p>
@@ -386,6 +388,8 @@ function mainCalculation() {
 
     </div>
 
-<Footer />
-
+    <Footer />
+    <p class="subtitle"><input class="checkbox" type="checkbox" name=""
+                    id="override"></p>
+            <p><input type="number" id="overrideMonthlyAverage" min="1" max="603"></p>
 </template>
